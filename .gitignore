@@ -173,3 +173,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# ENV
+venv/

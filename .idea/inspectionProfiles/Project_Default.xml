@@ -1,0 +1,67 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="68" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="PyArgumentEqualDefaultInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyAugmentAssignmentInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyClassicStyleClassInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="23">
+            <item index="0" class="java.lang.String" itemvalue="discord" />
+            <item index="1" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="2" class="java.lang.String" itemvalue="discord.py" />
+            <item index="3" class="java.lang.String" itemvalue="beautifulsoup4" />
+            <item index="4" class="java.lang.String" itemvalue="GitPython" />
+            <item index="5" class="java.lang.String" itemvalue="strawpy" />
+            <item index="6" class="java.lang.String" itemvalue="raven" />
+            <item index="7" class="java.lang.String" itemvalue="requests" />
+            <item index="8" class="java.lang.String" itemvalue="giphy_client" />
+            <item index="9" class="java.lang.String" itemvalue="tokage" />
+            <item index="10" class="java.lang.String" itemvalue="psutil" />
+            <item index="11" class="java.lang.String" itemvalue="prettytable" />
+            <item index="12" class="java.lang.String" itemvalue="PyNacl" />
+            <item index="13" class="java.lang.String" itemvalue="asyncurban" />
+            <item index="14" class="java.lang.String" itemvalue="humanize" />
+            <item index="15" class="java.lang.String" itemvalue="PythonGists" />
+            <item index="16" class="java.lang.String" itemvalue="PyGithub" />
+            <item index="17" class="java.lang.String" itemvalue="yarl" />
+            <item index="18" class="java.lang.String" itemvalue="pytz" />
+            <item index="19" class="java.lang.String" itemvalue="pyfiglet" />
+            <item index="20" class="java.lang.String" itemvalue="lyricsgenius" />
+            <item index="21" class="java.lang.String" itemvalue="youtube_dl" />
+            <item index="22" class="java.lang.String" itemvalue="opuslib" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E203" />
+          <option value="E231" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="set.add" />
+          <option value="cosmos.galaxies.moderation.moderation._GuildMemberProfile.member" />
+          <option value="dict.__getitem__" />
+          <option value="app" />
+          <option value="cosmos.core.utilities.converters.CosmosGuildConverter.guild" />
+          <option value="cosmos.core.utilities.converters.CosmosGuildConverter.confessions_channel" />
+          <option value="cosmos.core.functions.configs.handler.ConfigHandler.sentry" />
+          <option value="cosmos.galaxies.guild.levels.levels.ChannelConverter.title" />
+          <option value="flask_discord.models.base.DiscordModelsBase._payload" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

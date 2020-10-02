@@ -15,7 +15,7 @@ const TasksContainer = (props) => (
 class Tasks extends Component {
     render() {
         return (
-            <h1>ok</h1>
+            <h1>ok 2</h1>
             // <TasksContainer />
         );
     }

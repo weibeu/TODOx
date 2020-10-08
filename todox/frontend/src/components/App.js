@@ -4,10 +4,12 @@ import React, { Component } from 'react';
 import Header from "./Header";
 import Main from "./Main";
 
+document.body.style.margin = 0;
+
 const theme = {
     global: {
         colors: {
-            brand: '#40e0d0',
+            brand: '#a09fdf',
         },
         font: {
             family: "Roboto",

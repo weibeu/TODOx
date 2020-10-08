@@ -3,6 +3,7 @@ import {Box, Button, Form, FormField, Tab, Tabs, TextInput} from "grommet";
 
 const FormContainer = (props) => (
     <Box
+        margin="10px"
         align="center"
         animation="fadeIn"
         {...props}

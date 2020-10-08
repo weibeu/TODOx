@@ -1,21 +1,29 @@
 import React, {Component} from 'react';
 import {Box} from "grommet";
+import TodoItems from './TodoItems';
 
 const TasksContainer = (props) => (
     <Box
-        tag="tasks"
         alignSelf="center"
         animation="fadeIn"
         direction="column"
-        elevation="small"
-        {...props}
+        overflow="auto"
+        background="brand"
+        {...props} 
     />
 )
 
 class Tasks extends Component {
     render() {
+        
+        let pageItems=this.props.todos.map(
+            todo=>
+            <TodoItems todo={todo} key={todo.id} TodoPage={this}/>
+        );
         return (
-            <TasksContainer />
+            <TasksContainer >
+                {pageItems}
+            </TasksContainer>
         );
     }
 }

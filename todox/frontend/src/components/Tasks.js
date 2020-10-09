@@ -8,7 +8,9 @@ const TasksContainer = (props) => (
         animation="fadeIn"
         direction="column"
         overflow="auto"
-        background="brand"
+        width="100vw"
+        justify="center"
+        align="center"
         {...props} 
     />
 )
@@ -18,7 +20,7 @@ class Tasks extends Component {
         
         let pageItems=this.props.todos.map(
             todo=>
-            <TodoItems todo={todo} key={todo.id} TodoPage={this}/>
+            <TodoItems todo={todo} key={todo.id} TodoPage={this.props.TodoPage}/>
         );
         return (
             <TasksContainer >

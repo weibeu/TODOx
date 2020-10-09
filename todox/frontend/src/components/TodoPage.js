@@ -9,47 +9,63 @@ export class TodoPage extends Component {
 
     state={
         todos:[
-           {id:69,
-            completed:false,
-            subject:`play ${Math.floor(Math.random()*10)} games daily`
-            } 
+        //    {id:50,
+        //     completed:false,
+        //     subject:`play ${Math.floor(Math.random()*10)} games daily`
+        //     }, 
+        //    {id:51,
+        //     completed:true,
+        //     subject:`a todo that has been completed `
+        //     } ,
+        //    {id:53,
+        //     completed:false,
+        //     subject:`a todo that needs to be deleted`
+        //     } 
         ]
     }
         
-    componentDidMount(){
-            Axios.get(
-                '/api/tasks/',
-                {headers:{"Authorization": `Token ${localStorage.getItem('token')}`}})
-            .then(res=>this.setState({todos:res.data}));
+        componentDidMount(){
+                Axios.get(
+                    '/api/tasks/',this.props.app.getAuthHeader())
+                .then(res=>this.setState({todos:res.data}));    
+        }
+
+    toggleCompletionStatus(id){
+        this.setState(
+            {todos:this.state.todos.map(todo => {
+                        if(todo.id===id){
+                            todo.completed=!todo.completed;
+                            // CURRENTLY NOT ABLE TO SEND TO SERVER COZ POST CREATES A NEW OBJ
+                            this.updateTodosOnServer(todo.id,todo.subject,todo.completed);
+                        }
+                        return todo; }
+                    )
+            })
     }
 
-    markChecked(){
-        console.log('from markChecked of TodoPage');
+    sendTodosToServer(id,subject,completed){
+        Axios.post('/api/tasks/',{"id":id,"subject":subject,"completed":completed},this.props.app.getAuthHeader());
     }
-
-    sendTodosToServer(subject){
-        Axios.post('/api/tasks/',{"subject":subject},
-        {headers:{"Authorization": `Token ${localStorage.getItem('token')}`}})
-        .then(res=>console.log(res));
+    updateTodosOnServer(id,subject,completed){
+        Axios.put('/api/tasks/',{"id":id,"subject":subject,"completed":completed},this.props.app.getAuthHeader());
     }
     
-
-    toggleCompletionStatus =(id)=> {
-        this.setState={todos:this.state.todos.map(
-            todo=>{
-                if (todo.id==id) {
-                    todo.completed=!todo.completed;
-                }
-                return todo;
-            }
-        )};
+    deleteTodos(id){
+        this.setState(
+            {todos:this.state.todos.filter(todo=>todo.id!=id )}
+        )
     }
-
+    addNewTodo=(subject)=>{
+        if(subject!==null){let todos = this.state.todos;
+        let id = todos[todos.length-1].id++;
+        this.setState({todos:[...todos,{id:id,completed:false,subject:subject}]})}
+        this.sendTodosToServer(id,subject,false);
+    }   
     render() {
 
         return (<>
-            <Tasks todos={this.state.todos} />
-            <AddTodo/>
+            <AddTodo newTodo={this.addNewTodo}/>
+            <Tasks todos={this.state.todos} TodoPage={this} />
         </>);
     }
 }

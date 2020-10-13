@@ -34,8 +34,15 @@ class App extends Component {
         this.state = this.getInitialState()
     }
 
-    getHeader(token) {
-        return {"Authorization": `Token ${token}`}
+
+    getAuthHeader(){
+        let token;
+        if (this.state.token!=null) {
+            token=this.state.token;
+        } else {
+            token=localStorage.getItem("token")
+        }
+        return {headers:{"Authorization": `Token ${token}`}}
     }
 
     updateAuthState(json) {
@@ -51,13 +58,12 @@ class App extends Component {
 
     componentDidMount() {
         this.startLoading()
-        const token = localStorage.getItem("token")
         axios
-            .get('/api/auth/user/', {headers: this.getHeader(token)})
+            .get('/api/auth/user/', this.getAuthHeader())
             .then(response => {
                 let json = response.data
                 if (response.status === 200) {
-                    this.updateAuthState({user: json, token: token})
+                    this.updateAuthState({user: json, token: localStorage.getItem("token")})
                 }
             })
             .catch(error => {
@@ -105,7 +111,7 @@ class App extends Component {
     deAuthorize() {
         this.startLoading()
         axios
-            .post('/api/auth/revoke/', {}, {headers: this.getHeader(this.state.token)})
+            .post('/api/auth/revoke/', {}, this.getAuthHeader())
             .then(response => {
                 if (response.status === 204) {
                     this.setState(prevState => {
